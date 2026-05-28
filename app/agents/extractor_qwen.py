@@ -14,6 +14,7 @@ llm = OllamaClient(model="qwen2.5:7b")
 def extractor_qwen_node(state):
 
     text = state.get("text", "")
+    api_key = state.get("api_key", None)
 
     prompt = f"""
 You are a biomedical information extractor.
@@ -39,7 +40,7 @@ TEXT:
 {text}
 """
 
-    raw = llm.generate(prompt)
+    raw = llm.generate(prompt, api_key=api_key)
 
     data = extract_json(raw) or {}
 

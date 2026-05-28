@@ -5,6 +5,7 @@ class GraphState(TypedDict):
 
     # input
     text: str
+    api_key: Optional[str]
 
     # extractors
     qwen_extraction: Optional[Dict[str, Any]]

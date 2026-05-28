@@ -5,6 +5,7 @@ llm = OllamaClient()
 
 def extractor_node(state):
     text = state["text"]
+    api_key = state.get("api_key", None)
 
     prompt = f"""
 You are a biomedical research assistant.
@@ -23,7 +24,7 @@ TEXT:
 {text}
 """
 
-    response = llm.generate(prompt)
+    response = llm.generate(prompt, api_key=api_key)
 
     try:
         data = json.loads(response)

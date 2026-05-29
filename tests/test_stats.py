@@ -1,4 +1,4 @@
-from services.sample_size import (
+from app.core.sample_size import (
     estimate_effect_size_from_clinical_context,
     sample_size_two_group_ttest
 )

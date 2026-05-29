@@ -23,14 +23,14 @@ def sample_size_two_group_ttest(effect_size, alpha=0.05, power=0.80):
     return math.ceil(n)
 
 
+_CLINICAL_CONTEXT_MAPPING = {
+    "RCT": 0.5,
+    "cohort": 0.3,
+    "case-control": 0.4,
+    "observational": 0.2,
+    "unclear": 0.3
+}
+
+
 def estimate_effect_size_from_clinical_context(study_type):
-
-    mapping = {
-        "RCT": 0.5,
-        "cohort": 0.3,
-        "case-control": 0.4,
-        "observational": 0.2,
-        "unclear": 0.3
-    }
-
-    return mapping.get(study_type, 0.3)
+    return _CLINICAL_CONTEXT_MAPPING.get(study_type, 0.3)

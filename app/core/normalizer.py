@@ -1,6 +1,19 @@
 import re
 
 
+STUDY_TYPE_MAPPING = {
+    "randomized controlled trial": "RCT",
+    "rct": "RCT",
+    "cohort study": "cohort",
+    "cohort": "cohort",
+    "case control": "case-control",
+    "case-control": "case-control",
+    "cross sectional": "cross-sectional",
+    "cross-sectional": "cross-sectional",
+    "unclear": "unclear"
+}
+
+
 def normalize_study_type(text):
 
     if text is None:
@@ -8,19 +21,7 @@ def normalize_study_type(text):
 
     t = text.lower().strip()
 
-    mapping = {
-        "randomized controlled trial": "RCT",
-        "rct": "RCT",
-        "cohort study": "cohort",
-        "cohort": "cohort",
-        "case control": "case-control",
-        "case-control": "case-control",
-        "cross sectional": "cross-sectional",
-        "cross-sectional": "cross-sectional",
-        "unclear": "unclear"
-    }
-
-    return mapping.get(t, text)
+    return STUDY_TYPE_MAPPING.get(t, text)
 
 
 def normalize_population(text):

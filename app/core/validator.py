@@ -8,7 +8,7 @@ def validate_study(state):
     effect_size = state.get("effect_size", 0)
 
     # RULE 1
-    if study_type == "RCT" and statistical_test not in ["t-test", "ANOVA"]:
+    if study_type == "RCT" and statistical_test not in {"t-test", "ANOVA"}:
         issues.append("Possible mismatch between RCT and statistical test")
 
     # RULE 2

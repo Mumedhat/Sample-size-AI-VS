@@ -1,18 +1,18 @@
 import re
 
 
+_SAMPLE_SIZE_PATTERNS = [
+    re.compile(r"n\s*=\s*(\d+)", re.IGNORECASE),
+    re.compile(r"N\s*=\s*(\d+)", re.IGNORECASE),
+    re.compile(r"(\d+)\s*patients", re.IGNORECASE),
+    re.compile(r"(\d+)\s*participants", re.IGNORECASE),
+    re.compile(r"sample size of\s*(\d+)", re.IGNORECASE)
+]
+
 def extract_sample_size(text):
 
-    patterns = [
-        r"n\s*=\s*(\d+)",
-        r"N\s*=\s*(\d+)",
-        r"(\d+)\s*patients",
-        r"(\d+)\s*participants",
-        r"sample size of\s*(\d+)"
-    ]
-
-    for p in patterns:
-        m = re.search(p, text, re.IGNORECASE)
+    for p in _SAMPLE_SIZE_PATTERNS:
+        m = p.search(text)
         if m:
             return int(m.group(1))
 

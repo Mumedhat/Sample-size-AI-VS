@@ -37,7 +37,7 @@ def weighted_vote(items):
 
     total = sum(scores.values())
 
-    # 🔥 CRITICAL FIX
+    # 🔥 CRITICAL FIX: Prevent division by zero
     if total <= 0:
         return None, 0.0
 

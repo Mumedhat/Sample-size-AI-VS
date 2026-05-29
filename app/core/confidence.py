@@ -9,24 +9,24 @@ def has_numeric_population(text):
     return bool(re.search(r'\d+', text))
 
 
+VAGUE_TERMS = {
+    "patients",
+    "subjects",
+    "participants",
+    "people",
+    "individuals",
+    "patients with",
+    "dental needs"
+}
+
 def is_vague_population(text):
 
     if text is None:
         return True
 
-    vague_terms = [
-        "patients",
-        "subjects",
-        "participants",
-        "people",
-        "individuals",
-        "patients with",
-        "dental needs"
-    ]
-
     t = text.lower().strip()
 
-    return t in vague_terms or len(t.split()) <= 2
+    return t in VAGUE_TERMS or len(t.split()) <= 2
 
 
 def valid_intervention(text):

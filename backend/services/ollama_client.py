@@ -1,9 +1,10 @@
+import os
 import requests
 
 class OllamaClient:
     def __init__(self, model="qwen2.5:7b"):
         self.model = model
-        self.url = "http://localhost:11434/api/generate"
+        self.url = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
 
     def generate(self, prompt: str):
         res = requests.post(self.url, json={
